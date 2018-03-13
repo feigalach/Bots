@@ -4,8 +4,6 @@ import org.telegram.telegrambots.api.objects.Update;
 
 public class User {
 
-	
-
 	private String firstName;
 	private String lastName;
 	private String username;
@@ -32,8 +30,6 @@ public class User {
 
 	}
 
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -48,14 +44,12 @@ public class User {
 		return result;
 	}
 
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null && this.equals(null))
-			return true;			
+			return true;
 		else if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
@@ -92,8 +86,6 @@ public class User {
 			return false;
 		return true;
 	}
-
-
 
 	public String getFirstName() {
 		return firstName;
@@ -143,18 +135,18 @@ public class User {
 		this.message = message;
 	}
 
-	@Override
-	public String toString() {
-		return "User[" + "firstName=" + firstName + ", lastName=" + lastName + ", userName=" + username + ", userId="
-				+ userId + ", chatId=" + chatId + ", userMessage=" + message + ']';
-	}
-
 	public String getCallbackQueryData() {
 		return callbackQueryData;
 	}
 
 	public void setCallbackQueryData(String callbackQueryData) {
 		this.callbackQueryData = callbackQueryData;
+	}
+
+	@Override
+	public String toString() {
+		return "User[" + "firstName=" + firstName + ", lastName=" + lastName + ", userName=" + username + ", userId="
+				+ userId + ", chatId=" + chatId + ", userMessage=" + message + ']';
 	}
 
 }

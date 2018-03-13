@@ -42,6 +42,10 @@ public class MoodaleBot extends TelegramLongPollingBot {
 			user = new User(update);
 			users.put(user.getUserId(), user);
 		}
+		else if(update.hasCallbackQuery()){
+			//update additional parameters for callback
+			user.setCallbackQueryData(update.getCallbackQuery().getData());
+		}
 
 		return user;
 	}
@@ -82,7 +86,7 @@ public class MoodaleBot extends TelegramLongPollingBot {
 
 			User user = getUser(Long.valueOf(update.getCallbackQuery().getFrom().getId()), update);
 
-			String botAnswer = user.getMessage(); // default
+			String botAnswer = user.getCallbackQueryData(); // default
 
 			switch (update.getCallbackQuery().getData()) {
 
@@ -178,14 +182,14 @@ public class MoodaleBot extends TelegramLongPollingBot {
 		MoodaleBot.this.log(user, botAnswer);
 	}
 
-	private void log(User user, String bot_answer) {
+	private void log(User user, String botAnswer) {
 		System.out.println("\n ----------------------------");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		System.out.println(dateFormat.format(date));
 		System.out.println("Message from " + user.getFirstName() + " " + user.getLastName() + ". (id = "
-				+ user.getUserId() + ") \n Text - " + user.getMessage());
-		System.out.println("Bot answer: \n Text - " + bot_answer);
+				+ user.getUserId() + ") \nText - " + user.getMessage() + " + " + user.getCallbackQueryData());
+		System.out.println("Bot answer: \nText - " + botAnswer);
 	}
 
 }
