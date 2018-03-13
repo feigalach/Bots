@@ -13,7 +13,8 @@ public class Main {
 
       // Register our bot
       try {
-          botsApi.registerBot(new MyBot());
+         // botsApi.registerBot(new MyBot());
+    	  botsApi.registerBot(new MoodaleBot());
       } catch (TelegramApiException e) {
           e.printStackTrace();
       }
